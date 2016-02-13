@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--<link rel="stylesheet" type="text/css" href="stylesheets/styles.css">-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rob's app</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/SVG"],
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+      processEscapes: true
+    },
+	
+    "SVG": {  scale:120, font:"STIX-Web"}
+  });
+  
+
+  
+</script>
+<!-- Possible values for font:  TeX, STIX-Web, Asana-Math, Neo-Euler, Gyre-Pagella, Gyre-Termes and Latin-Modern.-->
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_SVG">
+</script>
+
+</head>
+<body>
+<section id="main">
+    <a href="http://www.mathjax.org">
+    <img title="Powered by MathJax"
+    src="//cdn.mathjax.org/mathjax/badge/mj_logo.png"
+    border="0" alt="Powered by MathJax" />
+</a>
+    <h1 id="title">
+        MathJax seed file :  Input TeX ; Output SVG 
+    </h1>
+    <div id="links-wrapper">
+        <ul id="links-list">
+            <li class="link"><a href="https://github.com/mathjax">MathJax</a></li>
+            <li class="link"><a href="http://docs.mathjax.org/en/latest/api/index.html">The MathJax API</a></li>
+            <li class="link"><a href="http://docs.mathjax.org/en/latest/options/SVG.html">The MathJax SVG output processor</a></li>
+            <li class="link"><a href="http://docs.mathjax.org/en/latest/tex.html#supported-latex-commands">The MathJax supported LaTeX commands</a></li>
+            <li class="link"><a href="https://github.com/mathjax/MathJax-node">MathJax for Node.js</a></li>
+            <li class="link"><a href="https://github.com/mathjax/MathJax-examples">MathJax examples</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        
+        When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+
+$\wedge$
+$\bigcup$
+$ \implies $
+$\imath$
+$  \label$
+<br>
+$\bigcirc \ne a  \bbox[red]{x+y}$
+        
+    </div>
+</section>
+
+</body>
+</html>

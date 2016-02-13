@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- Meta Information -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" type="text/css" href=" ">
+
+<!-- Scripts -->
+<script src="  "></script>
+
+<title>Shadow DOM stuff</title>
+
+<style>
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        
+    }    
+    section.references{
+        border: solid 1.4px rgba(44,44,44,1);
+        background-color: rgba(220,220,220,1);
+        margin: 3em 0 3em 0;
+        
+    }
+    section.references>h1{
+        background-color: rgba(192,192,192,1);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.3em;
+        padding: 5px;        
+    }
+    section.references>a{
+        display: block;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 1em 0 1em 0;
+    }
+    
+    div.infobox{
+        background-color: rgba(255,255,200,1);
+        border: solid 2px darkorange;
+        border-radius: 5px;
+        margin:  1em 4em 1em 4em;
+        pading: 1em;
+    }
+    div.infobox-title>h2{
+        padding: .3em;
+        font-family: monospace;
+        font-size: 1.3em;
+    }
+    table.infobox-table{
+        width:100%;
+    }
+    th{
+        text-align: left;
+        
+    }
+    td{
+        text-align: center;
+        background-color: rgba(255,255,240,1);
+        border: solid 2px black;
+    }
+ 
+ header{
+     background-color: rgba(190,190,255,1);
+     color: rgba(60,60,190,1);
+     font-family: Courier New, Courier, monospace;
+ }
+ #title{
+     padding: .2em;
+ }
+ #abstract{
+     padding: 0 .5em .5em .5em;
+ }
+    
+</style>
+
+</head>
+<body>
+    
+    <header>
+        <h1 id="title"><a href="https://www.w3.org/TR/shadow-dom/">Shadow DOM (W3: December 15, 2015)</a> </h1>
+        <div id="abstract">
+           The <strong>Shadow DOM</strong> provides encapsulation for the JavaScript, CSS, and templating in a Web Component. Shadow DOM makes it so these things remain separate from the DOM of the main document. You can also use Shadow DOM by itself, outside of a web component.
+
+Why would you want to keep some code separate from the rest of the page? One reason is that on a large site, for example, if the CSS is not carefully organized, the styling for the navigation can "leak" into the main content area where it was not intended to go, or vice-versa. As a site or an app scales, this kind of thing becomes difficult to avoid.
+        </div>
+    </header>
+
+
+<div id="ingredient-list">
+    <h2>Ingredients:</h2>
+<ul>
+    <li>A document tree is a node tree [DOM] whose root node is a document.</li>
+    <li>Any element can host zero or one associated node trees, called a shadow tree.</li>
+    <li>A shadow host is an element that hosts one shadow tree.</li>
+    <li>A shadow tree has an associated flag, called an encapsulation mode, which is either open or closed.</li>
+    <li>A shadow root is the root node of a shadow tree.</li>
+    <li>A component tree is either a document tree or a shadow tree.</li>
+    <li>A node A is called a deep child of a node B, if either A is a child of B or A is the root node of the shadow tree that B hosts.</li>
+    <li>A node A is called a deep descendant of a node B, if either A is a deep child of B or A is a deep child of a node C that is a deep descendant of B.</li>
+    <li>An inclusive deep descendant is a node or one of its deep descendants.</li>
+    <li>A node A is called a deep parent of a node B if and only if B is a deep child of A.</li>
+    <li>A node A is called a deep ancestor of a node B if and only if B is a deep descendant of A.</li>
+    <li>An inclusive deep ancestor is a node or one of its deep ancestors.</li>
+    <li>When an element is an inclusive deep descendant of a document element, it is in a document deeply.</li>
+</ul>
+ </div>
+
+<div id="shadow-host" class="rupert">Shadowy Host</div>
+
+<div id="other-shadow-host" >Other Shadowy Host</div>
+
+
+
+<template id="templatee">
+    <style>
+        section.template-section{
+            background-color: rgba(220,150,150,1);
+            border: dashed .33em rgba(100,20,20,.4);
+            font-family: Courier New, Courier, monospace;
+            color: rgba(20,20,20,1);
+            max-width: 500px;
+            height: 2em;
+            margin: auto;
+        }
+        div.shadow-host-innerhtml{
+            text-align: center;
+            font-size: x-large;
+        }
+        
+    </style>
+    <section class="template-section">
+    
+    <div class="shadow-host-innerhtml">
+        <content select=".rupert"></content>
+    </div>
+    </section>
+    
+</template>
+<script>
+    var shadow_host = document.querySelector("#shadow-host").createShadowRoot();
+    var other_shadow_host = document.querySelector("#other-shadow-host").createShadowRoot();
+    var template = document.querySelector("#templatee");
+    var shadow_root = document.importNode(template.content, true); // this is the root because it's parent node evaluates to null 
+    shadow_host.appendChild(shadow_root);
+    other_shadow_host.appendChild(shadow_root);  // Does not work!
+</script>
+
+
+    
+    
+    <section class="references">
+        
+        <h1 class="reference-title">References</h1>
+        
+    <a class="reference" href="http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom/">Shadow DOM</a>
+    <a class="reference" href="http://www.html5rocks.com/en/tutorials/webcomponents/template/">HTML's new template tag</a>
+    <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/API/Document">MDN Web API's : Document interface</a>
+    <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components">MDN Web Components</a>
+    <a class="reference" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM">MDN Web Components : Shadow DOM</a>
+        
+        
+    </section>
+
+</body>
+</html>
